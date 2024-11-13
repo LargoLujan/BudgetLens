@@ -1,21 +1,29 @@
 # BudgetLens
 
-## Descripción
-
-**BudgetLens** es una aplicación diseñada para proporcionar análisis financieros y recomendaciones basadas en datos de ingresos y gastos. La aplicación utiliza el modelo GPT de OpenAI para generar consejos y recomendaciones personalizadas en función del contexto económico de los usuarios. Dependiendo del tipo de usuario configurado en la base de datos, algunos usuarios tendrán acceso a recomendaciones detalladas, mientras que otros verán un mensaje invitándolos a adquirir acceso a funciones avanzadas.
+🇪🇸 [Español](#contenido) | 🇬🇧 [English](#contents)
 
 ---
 
-## Tabla de Contenidos
+---
 
-1. [Instalación](#instalación)
-2. [Configuración](#configuración)
-3. [Estructura del Proyecto](#estructura-del-proyecto)
-4. [Iniciar la Aplicación](#iniciar-la-aplicación)
-5. [Endpoints Principales](#endpoints-principales)
-6. [Ejemplo de Uso](#ejemplo-de-uso)
-7. [Contribuciones](#contribuciones)
-8. [Licencia](#licencia)
+## Contenido (Español)
+
+1. [Descripción](#descripción)
+2. [Tabla de Contenidos](#tabla-de-contenidos)
+3. [Instalación](#instalación)
+4. [Configuración](#configuración)
+5. [Estructura del Proyecto](#estructura-del-proyecto)
+6. [Iniciar la Aplicación](#iniciar-la-aplicación)
+7. [Endpoints Principales](#endpoints-principales)
+8. [Ejemplo de Uso](#ejemplo-de-uso)
+9. [Contribuciones](#contribuciones)
+10. [Licencia](#licencia)
+
+---
+
+## Descripción
+
+**BudgetLens** es una aplicación diseñada para proporcionar análisis financieros y recomendaciones basadas en datos de ingresos y gastos. La aplicación utiliza el modelo GPT de OpenAI para generar consejos y recomendaciones personalizadas en función del contexto económico de los usuarios. Dependiendo del tipo de usuario configurado en la base de datos, algunos usuarios tendrán acceso a recomendaciones detalladas, mientras que otros verán un mensaje invitándolos a adquirir acceso a funciones avanzadas.
 
 ---
 
@@ -162,3 +170,172 @@ Las contribuciones son bienvenidas. Para contribuir:
 ## Licencia
 
 Este proyecto está bajo la licencia MIT. Puedes consultar el archivo [LICENSE](LICENSE) para más detalles.
+
+---
+
+---
+
+## Contents (English)
+
+1. [Description](#description)
+2. [Contents](#contents)
+3. [Installation](#installation)
+4. [Configuration](#configuration)
+5. [Project Structure](#project-structure)
+6. [Starting the Application](#starting-the-application)
+7. [Key Endpoints](#key-endpoints)
+8. [Usage Example](#usage-example)
+9. [Contributing](#contributing)
+10. [License](#license)
+
+---
+
+## Description
+
+**BudgetLens** is an application designed to provide financial analysis and recommendations based on income and expense data. The app uses OpenAI's GPT model to generate tailored advice and recommendations according to the economic context of users. Depending on the user type configured in the database, some users will have access to detailed recommendations, while others will see a message inviting them to acquire access to advanced features.
+
+---
+
+## Installation
+
+1. Clone this repository to your local machine:
+   ```bash
+   git clone https://github.com/LargoLujan/BudgetLens
+   ```
+
+2. Navigate to the project directory:
+   ```bash
+   cd BudgetLens
+   ```
+
+3. Create a virtual environment for the project:
+   ```bash
+   python -m venv env
+   ```
+
+4. Activate the virtual environment:
+   - **Windows**:
+     ```bash
+     .\env\Scripts\activate
+     ```
+   - **Mac/Linux**:
+     ```bash
+     source env/bin/activate
+     ```
+
+5. Install project dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+---
+
+## Configuration
+
+### Environment Variables
+
+This project uses **dotenv** for managing environment variables, including the OpenAI API key.
+
+1. Create a `.env` file in the `data` folder and include the OpenAI API key and other required values in the following format:
+
+   ```
+   OPENAI_API_KEY="your_openai_api_key_here"
+   ```
+
+2. The `.env` file will be automatically loaded when starting the application, allowing secure use of environment variables.
+
+---
+
+## Project Structure
+
+Your project structure is as follows:
+
+```plaintext
+BudgetLens/
+├── config/
+│   └── settings.py                # General project configuration
+├── data/
+│   └── .env                       # Environment variables file
+├── src/
+│   ├── api/
+│   │   ├── endpoints.py           # API endpoints
+│   │   └── main.py                # Main file to start the application
+│   ├── models/
+│   │   ├── data_processing.py     # Data processing logic
+│   │   └── recommendation.py      # Financial recommendations logic
+│   └── utils/
+│       ├── config_loader.py       # Config and API key loader
+│       ├── data_validation.py     # Data validation
+│       ├── gpt_recommender.py     # GPT connection functions
+│       ├── plot_analysis.py       # Financial chart analysis
+│       ├── prepare_context.py     # Recommendation context preparation
+│       └── user_utils.py          # User role and access utilities
+└── tests/
+    └── env/                       # Test environment
+└── README.md
+└── requirements.txt
+```
+
+---
+
+## Starting the Application
+
+To run the application in development mode with `Uvicorn`, ensure you’re in the project root and the virtual environment is active. Then, execute:
+
+```bash
+uvicorn src.api.main:app --reload
+```
+
+This will start the application at `http://127.0.0.1:8000`, and you can access the interactive API documentation at `http://127.0.0.1:8000/docs`.
+
+---
+
+## Key Endpoints
+
+### 1. `/recommendation`
+   - **Method**: GET
+   - **Description**: Generates financial recommendations based on the user’s income and expense data.
+   - **Access**: Access is based on the user type registered in the database. If the user has permission, a GPT-based recommendation is provided; otherwise, a URL is returned directing them to a subscription or product for recommendation access.
+
+---
+
+## Usage Example
+
+### Endpoint `/recommendation`
+
+#### Request
+   ```http
+   GET /recommendation
+   ```
+
+#### Response (User with Access)
+   ```json
+   {
+     "message": "Consider reducing expenses in X category to improve profitability."
+   }
+   ```
+
+#### Response (User without Access)
+   ```json
+   {
+     "message": "To access personalized recommendations, visit [link]"
+   }
+   ```
+
+---
+
+## Contributing
+
+Contributions are welcome. To contribute:
+
+1. Fork the repository.
+2. Create a new branch for your changes (`git checkout -b feature/new-feature`).
+3. Make your changes and commit them (`git commit -m 'Add new feature'`).
+4. Push your changes (`git push origin feature/new-feature`).
+5. Open a Pull Request for review.
+
+---
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
