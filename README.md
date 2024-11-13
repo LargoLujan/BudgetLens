@@ -23,7 +23,7 @@
 
 1. Clona este repositorio en tu máquina local:
    ```bash
-   git clone https://github.com/LargoLujan/budgetlens
+   git clone https://github.com/LargoLujan/BudgetLens
    ```
 
 2. Accede al directorio del proyecto:
