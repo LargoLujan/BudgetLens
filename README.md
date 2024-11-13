@@ -23,7 +23,7 @@
 
 1. Clona este repositorio en tu máquina local:
    ```bash
-   git clone https://github.com/LargoLujan/fashion_image_search_engine
+   git clone https://github.com/LargoLujan/budgetlens
    ```
 
 2. Accede al directorio del proyecto:
