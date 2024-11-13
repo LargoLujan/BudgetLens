@@ -162,6 +162,3 @@ Las contribuciones son bienvenidas. Para contribuir:
 ## Licencia
 
 Este proyecto está bajo la licencia MIT. Puedes consultar el archivo [LICENSE](LICENSE) para más detalles.
-=======
-# BudgetLens
->>>>>>> 82554a77b9a13f6571393be2152939a3652c8aa6
